@@ -21,13 +21,14 @@ conv        =   data[:,10]
 #TASK 1
 turb_freq = dissip/tke
 
-plt.figure(figsize=(5,5))
-plt.plot(y_plus, turb_freq, label ="turbulence frequence")
-plt.plot(y_plus, tke, label="turbulent kinetic energy")
-plt.plot(y_plus, dissip, label = "dissipation rate")
+plt.figure(figsize=(7,5))
+plt.plot(turb_freq,y_plus, label ="turbulence frequency")
+plt.plot(tke,y_plus, label="turbulent kinetic energy")
+plt.plot( dissip,y_plus, label = "dissipation rate")
 plt.ylabel("wall distance")
-plt.ylim(-1,6)
-#plt.xlim(-0.5,1)
+plt.title("Task 4.3 (1.)")
+#plt.ylim(-1,6)
+plt.xlim(-1,6)
 #plt.xlabel("turbulent kinetic energy")
 plt.legend()
 
@@ -39,13 +40,15 @@ eq_nu_t = uv/du_dy
 C_mu = 0.09
 eddy_visc = C_mu *(np.pow(tke,2)/dissip)
 
-plt.figure(figsize=(5,5))
-plt.plot(y_plus,eq_nu_t, label = "equivalent eddy viscosity")
-plt.plot(y_plus, eddy_visc, label = "eddy viscosity")
-
+plt.figure(figsize=(7,5))
+plt.plot(eq_nu_t, y_plus,label = "equivalent eddy viscosity")
+plt.plot(eddy_visc,y_plus,  label = "eddy viscosity")
+plt.xlabel("viscosity")
+plt.ylabel("wall distance")
+plt.title("Task 4.3 (2.)")
 plt.legend()
 
-"""
+
 #TASK 3
 
 
@@ -62,9 +65,11 @@ equi = -2*eq_nu_t*S_ij
 eddy = -2*eddy_visc*S_ij
 
 plt.figure(figsize=(7,5))
-plt.plot(y_plus, equi, label="reynolds stress tensor with equivalent eddy viscosity")
-plt.plot(y_plus, eddy, label="reynolds stress tensor with eddy viscosity")
-plt.plot(y_plus, R_ij_dev, label="R_ij^dev")
+plt.plot(equi,y_plus,  label="reynolds stress tensor with equivalent eddy viscosity")
+plt.plot(eddy, y_plus, label="reynolds stress tensor with eddy viscosity")
+plt.plot(R_ij_dev, y_plus, label="R_ij^dev")
+plt.title("Task 4.3 (4.)")
+plt.ylabel("Wall distance")
+plt.xlabel("Stress")
 plt.legend()
-"""
 plt.show() 
